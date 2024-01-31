@@ -43,4 +43,5 @@ st.divider()
 prompt=prompt+file_name+n_head+n_layer+device+dropout+save+block_size+min_lr+lr_decay+max_iters+block_size+batch_size
 #st.write(f"the prompt is {prompt}")
 code = prompt
+st.write("Command :")
 st.code(code, language='python')
