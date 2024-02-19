@@ -9,6 +9,7 @@ import pickle
 st.header("Preprocess Data")
 choice=st.radio("Choose Tokenization",options=['Tiktoken','Character-level'])
 if choice=='Tiktoken':
+    st.caption("Tiktoken tokenizer is a fast and efficient open-source tool developed by OpenAI for tokenizing text.The library provides methods to count tokens, handle large texts efficiently, and obtain token bounds for further text processing")
     try:
         path=st.text_input("Please enter the path to the dataset")
         
@@ -38,6 +39,7 @@ if choice=='Tiktoken':
     except Exception as e:
         st.warning(e)
 else:
+    st.caption(" Treats each character as a separate token, useful for handling ambiguous word boundaries and out-of-vocabulary terms.Mostly used in small GPTs for learning purpose.")
     try: 
         path=st.text_input("Please enter the path to the dataset")
         df=pd.read_csv(path)
@@ -71,8 +73,8 @@ else:
         # export to bin files
         train_ids = np.array(train_ids, dtype=np.uint16)
         val_ids = np.array(val_ids, dtype=np.uint16)
-        train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))
-        val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val.bin'))
+        train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train_char_level.bin'))
+        val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val_char_levelgit .bin'))
 
         # save the meta information as well, to help us encode/decode later
         meta = {
@@ -82,8 +84,10 @@ else:
         }
         with open(os.path.join(os.path.dirname(__file__), 'meta.pkl'), 'wb') as f:
             pickle.dump(meta, f)
+    except FileNotFoundError:
+        st.warning("Please input a valid file path")
     except Exception as e:
-        print(e)
+        st.warning(e)
 
 
 
@@ -95,6 +99,13 @@ else:
 
 # train.bin has 301,966 tokens
 # val.bin has 36,059 tokens
+st.write("")
+st.write("")
+st.write("")
 
+if st.button("HOME"):
+    st.switch_page("HoMe.py")
+if st.button("Proceed to train"):
+    st.switch_page("pages/2_Training.py")
 
 

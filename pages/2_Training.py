@@ -22,6 +22,8 @@ with col1:
     n_layer=' --n_layer='+st.text_input("enter number of layers")
     n_embed=' --n_embed='+st.text_input("enter embedding dimension")
     dropout=' --dropout='+st.text_input("enter dropout rate")
+    if st.button("Training Documentation"):
+      st.switch_page("pages/‎ .py")
 with col2:
     st.write("Learning Rate")
     learning_rate=" --learning_rate="+st.text_input('enter learning rate')
@@ -47,3 +49,8 @@ prompt=prompt+file_name+n_head+n_layer+device+dropout+save+block_size+learning_r
 code = prompt
 st.write("Command :")
 st.code(code, language='python')
+st.divider()
+if st.button("HOME"):
+    st.switch_page("HoMe.py")
+if st.button("Continue to Inference"):
+    st.switch_page("pages/Inference.py")

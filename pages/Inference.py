@@ -5,17 +5,15 @@ prompt='python sample.py '
 col1, col2,= st.columns((2,2))
 with col1:
     model=st.radio("Choose your model",["resume","Pretrained-Model1","Pre-trained Model 2"],
-                   captions = ["Select resume if you want to use  custom model", "Select pretrained models to infer from"])
+                   captions = ["Select resume if you want to use  custom model", "1555M param","125M param"])
     if model=='resume':
         model=' --init_from=resume'
         saved_model=st.text_input('Enter the saved model folder ("out-folder-name")')
         prompt+=' --out_dir='+saved_model
     elif model=='Pretrained-Model1':
         model=' --init_from=gpt2-xl'
-        st.caption("1555M param")
     else:
         model=' --init_from=gpt2'
-        st.caption("125M param")
 
         
                        
@@ -25,6 +23,8 @@ with col1:
         device=" --device=cpu"
     else:
         device=" --device=cuda"
+    if st.button("Inference Documentation"):
+      st.switch_page("pages/‎‎.py")
         
         
 with col2:
@@ -40,6 +40,9 @@ st.divider()
 prompt=prompt+model+device+num_samples+max_new_token+temperature+top_k+num_samples+start
 st.write("Command :")
 st.code(prompt,language='python')
+st.divider()
+if st.button("HOME"):
+    st.switch_page("HoMe.py")
     
     
     
