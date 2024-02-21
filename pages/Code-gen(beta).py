@@ -1,10 +1,10 @@
 import streamlit as st
 
 
-st.write("S-GPT ASSISTANT")
 
 """
-Generate Code with a trained model
+# Welcome to S-GPT Assitant! 
+Generate Simple :green[Python] Code using our pretrained model (:red[353.7M ] ) param
 """
 
 from transformers import pipeline
@@ -24,6 +24,21 @@ if submit_button:
 #NL_input = "define the method help with two arguments a and b"
         output = model.generate(**tokenizer(user_input, padding="max_length", truncation=True, max_length=512, return_tensors="pt"))
         output_code = tokenizer.decode(output[0], skip_special_tokens=True)
-        st.write(output_code)
+        st.code(output_code,language="python")
     except:
         st.warning("please provide a prompt")
+if st.button("HOME"):
+    st.switch_page("HoMe.py")
+#add 10 and 15 and store it in VAR 
+#print sum
+#Call a function FUN to add two numbers A and B
+#decode a hex string '4a4b4c' to utf-8.
+#if AttributeError exception is caught
+#raise an TemplateSyntaxError exception with an argument string "'templatetag' statement takes one argument".
+#split instructions by ',' character, substitute the result for styles
+#call the function sql_all with 3 arguments: app_config, self.style and connection, substitute the result for statements.
+#do nothing
+# define the function load_command_class with arguments: app_name and name.
+# if num_loopvars is greater than integer 1, unpack is an boolean True, otherwise is an boolean False.
+#substitute s1 for s.
+

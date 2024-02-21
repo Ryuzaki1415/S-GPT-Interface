@@ -1,6 +1,15 @@
 import streamlit as st
+st.set_page_config(
+   layout="wide",
+   initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': 'https://en.wikipedia.org/wiki/Suicide',
+        'Report a bug': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        'About': "# Made with :heart: by Ryuzaki1415"
+    }
+   
+)
 
-st.set_page_config(layout="wide")
 st.title("INFERENCE")
 prompt='python sample.py '
 col1, col2,= st.columns((2,2))

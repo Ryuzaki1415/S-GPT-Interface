@@ -1,6 +1,7 @@
 import streamlit as st
 st.set_page_config(
    layout="wide",
+   page_icon=":hammer",
    initial_sidebar_state="collapsed",
     menu_items={
         'Get Help': 'https://en.wikipedia.org/wiki/Suicide',
