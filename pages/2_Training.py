@@ -18,9 +18,9 @@ with col1:
         device=' --device=cpu'
     else:
         device=" --device=cuda"
-    n_head=' --n_head='+st.text_input('enter number of attention heads')
+    n_head=' --n_head='+st.text_input('Number of attention heads')
     n_layer=' --n_layer='+st.text_input("enter number of layers")
-    n_embed=' --n_embed='+st.text_input("enter embedding dimension")
+    n_embed=' --n_embd='+st.text_input("enter embedding dimension")
     dropout=' --dropout='+st.text_input("enter dropout rate")
     if st.button("Training Documentation"):
       st.switch_page("pages/‎ .py")
@@ -30,7 +30,7 @@ with col2:
     choice = st.radio(
     "Save Checkpoints",
     ["***True***", "***False***"],
-    captions=['False if only save when val accuracy improves','‎ ‎ ‎ '])
+    captions=['‎ ‎ ‎ ','‎ ‎ ‎ '],index=1,help="Select False if you want to save checkpoints only when the val_accuracy improves")
 
     if choice == '***True***':
         save=' --always_save_checkpoint='+'True'
@@ -44,7 +44,7 @@ with col2:
 
     
 st.divider()
-prompt=prompt+file_name+n_head+n_layer+device+dropout+save+block_size+learning_rate+min_lr+lr_decay+max_iters+block_size+batch_size+out_dir+" --compile=False" 
+prompt=prompt+file_name+n_head+n_layer+device+dropout+save+block_size+learning_rate+min_lr+lr_decay+max_iters+batch_size+out_dir+n_embed
 #st.write(f"the prompt is {prompt}")
 code = prompt
 st.write("Command :")
@@ -53,4 +53,4 @@ st.divider()
 if st.button("HOME"):
     st.switch_page("HoMe.py")
 if st.button("Continue to Inference"):
-    st.switch_page("pages/Inference.py")
+    st.switch_page("pages/3_Inference.py")

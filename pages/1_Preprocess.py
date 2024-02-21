@@ -16,7 +16,7 @@ if choice=='Tiktoken':
         df=pd.read_csv(path)
         data=df['text'].str.cat(sep='\n')
         st.write("Dataset:")
-        st.write(df)
+        st.dataframe(df)
 
         n = len(data)
         train_data = data[:int(n*0.9)]
@@ -32,8 +32,8 @@ if choice=='Tiktoken':
         # export to bin files
         train_ids = np.array(train_ids, dtype=np.uint16)
         val_ids = np.array(val_ids, dtype=np.uint16)
-        train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train.bin'))
-        val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val.bin'))
+        train_ids.tofile(os.path.join(os.path.dirname(__file__), 'train_tiktoken.bin'))
+        val_ids.tofile(os.path.join(os.path.dirname(__file__), 'val_tiktoken.bin'))
     except FileNotFoundError:
         st.warning("Please input a valid file path")
     except Exception as e:
@@ -104,7 +104,7 @@ st.write("")
 st.write("")
 
 if st.button("HOME"):
-    st.switch_page("HoMe.py")
+    st.switch_page("Home.py")
 if st.button("Proceed to train"):
     st.switch_page("pages/2_Training.py")
 

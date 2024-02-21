@@ -1,0 +1,7 @@
+dataset.txt
+spotify_millsongdata.csv
+test dataset.csv
+venv
+pages/train_tiktoken.bin
+pages/val_tiktoken.bin 
+.vscode/
