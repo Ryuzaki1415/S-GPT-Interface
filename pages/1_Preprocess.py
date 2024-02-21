@@ -5,8 +5,12 @@ import tiktoken
 import numpy as np
 import shutil
 import pickle
+st.set_page_config(
+   initial_sidebar_state="collapsed",
+   
+)
 
-st.header("Preprocess Data")
+st.header(":sparkles: Preprocess Data :sparkles:")
 choice=st.radio("Choose Tokenization",options=['Tiktoken','Character-level'])
 if choice=='Tiktoken':
     st.caption("Tiktoken tokenizer is a fast and efficient open-source tool developed by OpenAI for tokenizing text.The library provides methods to count tokens, handle large texts efficiently, and obtain token bounds for further text processing")

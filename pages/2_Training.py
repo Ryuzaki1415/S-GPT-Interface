@@ -1,8 +1,16 @@
 import streamlit as st
-
-st.set_page_config(layout="wide")
+st.set_page_config(
+   layout="wide",
+   initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': 'https://en.wikipedia.org/wiki/Suicide',
+        'Report a bug': "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        'About': "# Made with :heart: by Ryuzaki1415"
+    }
+   
+)
 prompt='python train.py config/'
-st.title("TRAIN A GPT!")
+st.title("TRAIN A GPT! :robot_face:")
 col1, col2,= st.columns((2,2))
 
 with col1:
@@ -19,14 +27,14 @@ with col1:
     else:
         device=" --device=cuda"
     n_head=' --n_head='+st.text_input('Number of attention heads')
-    n_layer=' --n_layer='+st.text_input("enter number of layers")
-    n_embed=' --n_embd='+st.text_input("enter embedding dimension")
-    dropout=' --dropout='+st.text_input("enter dropout rate")
+    n_layer=' --n_layer='+st.text_input("Number of layers")
+    n_embed=' --n_embd='+st.text_input("Embedding dimension")
+    dropout=' --dropout='+st.text_input("Dropout rate")
     if st.button("Training Documentation"):
       st.switch_page("pages/‎ .py")
 with col2:
     st.write("Learning Rate")
-    learning_rate=" --learning_rate="+st.text_input('enter learning rate')
+    learning_rate=" --learning_rate="+st.text_input('Learning rate')
     choice = st.radio(
     "Save Checkpoints",
     ["***True***", "***False***"],
@@ -36,11 +44,11 @@ with col2:
         save=' --always_save_checkpoint='+'True'
     else:
         save=' --always_save_checkpoint='+'False'
-    min_lr=' --min_lr='+st.text_input('enter minimum learning rate')
-    max_iters=' --max_iters='+st.text_input('enter maximum number of iterations')
-    lr_decay=' --lr_decay_iters='+st.text_input('enter learning rate decay iterations')
-    block_size=' --block_size='+st.text_input('enter Block size')
-    batch_size=' --batch_size='+st.text_input('enter Batch size')
+    min_lr=' --min_lr='+st.text_input('Minimum learning rate')
+    max_iters=' --max_iters='+st.text_input('Maximum number of iterations')
+    lr_decay=' --lr_decay_iters='+st.text_input('Learning rate decay iterations')
+    block_size=' --block_size='+st.text_input('Block size')
+    batch_size=' --batch_size='+st.text_input('Batch size')
 
     
 st.divider()
